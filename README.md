@@ -129,7 +129,152 @@ Exemplo:
 # 7. COLEÇÃO POSTMAN
 Foi criada uma coleção no Postman contendo todos os endpoints da aplicação para facilitar testes.  
 
-
+'
+{
+  "info": {
+    "name": "FIAP - API Usuarios",
+    "_postman_id": "fiap-usuarios-collection",
+    "description": "Collection para testes da API de Usuários",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Criar Usuario",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Bruno\",\n  \"email\": \"bruno@email.com\",\n  \"login\": \"bruno\",\n  \"senha\": \"123\",\n  \"endereco\": \"Rua X\",\n  \"tipo\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuarios",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuarios"]
+        }
+      }
+    },
+    {
+      "name": "Criar Usuario (Email duplicado)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Bruno\",\n  \"email\": \"bruno@email.com\",\n  \"login\": \"bruno2\",\n  \"senha\": \"123\",\n  \"endereco\": \"Rua Y\",\n  \"tipo\": \"CLIENTE\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuarios",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuarios"]
+        }
+      }
+    },
+    {
+      "name": "Buscar Usuario por Nome",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuarios?nome=Bruno",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuarios"],
+          "query": [
+            {
+              "key": "nome",
+              "value": "Bruno"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Alterar Senha",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "\"novaSenha123\""
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuarios/1/senha",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuarios", "1", "senha"]
+        }
+      }
+    },
+    {
+      "name": "Login Valido",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuarios/login?login=bruno&senha=123",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuarios", "login"],
+          "query": [
+            {
+              "key": "login",
+              "value": "bruno"
+            },
+            {
+              "key": "senha",
+              "value": "123"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Login Invalido",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/usuarios/login?login=bruno&senha=errado",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "usuarios", "login"],
+          "query": [
+            {
+              "key": "login",
+              "value": "bruno"
+            },
+            {
+              "key": "senha",
+              "value": "errado"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+'
 
 
 ## Extra:  
