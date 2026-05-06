@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: fase1
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/app
+    username: postgres
+    password: 123
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger
